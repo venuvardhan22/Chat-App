@@ -21,13 +21,9 @@ app.use(cors({
     credentials:true
 }))
 
-app.use("/auth",auth)
+app.use("/auth", auth)
 
-app.use("/messages",messages)
-
-app.use("/chats",messages)
-
-app.use("/go",messages)
+app.use("/messages", messages)
 
 if(process.env.NODE_ENV === "production") {  
     app.use(express.static(path.join(__dirname, "../frontend/dist")))
@@ -36,7 +32,7 @@ if(process.env.NODE_ENV === "production") {
     })
 }
 
-const PORT = process.env.PORT   
+const PORT = process.env.PORT || 5000
 
 try {
     await mongoose.connect(process.env.MONGO_URL)
